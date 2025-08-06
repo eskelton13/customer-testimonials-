@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Testimonials</title>
+  <style>
+    :root {
+      --primary-red: #d32f2f;
+      --accent-red: #b71c1c;
+      --light-grey: #f4f4f4;
+      --medium-grey: #e0e0e0;
+      --dark-grey: #444;
+      --white: #fff;
+      --header-shadow: 0 8px 24px rgba(211,47,47,0.13);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--light-grey);
+      margin: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 0;
+      box-shadow: 0 4px 24px rgba(211,47,47,0.07);
+      border: 1px solid var(--medium-grey);
+    }
+    .custom-header-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 38px;
+    }
+    .custom-header {
+      padding: 22px 40px;
+      border: 7px solid var(--primary-red);
+      border-radius: 0;
+      background: linear-gradient(120deg, var(--white) 70%, var(--light-grey) 100%);
+      color: #111;
+      font-size: 2.1em;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-shadow: none;
+      box-shadow: var(--header-shadow);
+      position: relative;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      text-align: center;
+    }
+    .custom-header::after {
+      content: '';
+      position: absolute;
+      left: 20px; right: 20px; bottom: 12px;
+      height: 4px;
+      border-radius: 0;
+      background: linear-gradient(90deg, var(--primary-red) 10%, var(--accent-red) 90%);
+      opacity: 0.15;
+      z-index: 1;
+    }
+    .custom-header span {
+      color: #111;
+      background: none;
+      padding: 0 2px;
+    }
+    .story-section {
+      background: var(--medium-grey);
+      border-radius: 0;
+      padding: 28px 24px 24px 24px;
+      margin-bottom: 36px;
+      border-left: 8px solid var(--primary-red);
+      box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+    }
+    .story-title {
+      font-size: 1.4em;
+      font-weight: bold;
+      color: var(--primary-red);
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+    .story-content {
+      font-size: 1.08em;
+      color: var(--dark-grey);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+    .story-author {
+      font-weight: bold;
+      color: var(--primary-red);
+      text-decoration: underline;
+      font-size: 1.05em;
+    }
+    .relevant-link {
+      display: block;
+      text-align: center;
+      margin: 26px 0 36px 0;
+    }
+    .relevant-link a {
+      color: var(--primary-red);
+      font-weight: bold;
+      text-decoration: underline;
+      font-size: 1.07em;
+      transition: color 0.2s;
+    }
+    .relevant-link a:hover {
+      color: var(--accent-red);
+    }
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--medium-grey);
+      border-radius: 0;
+      padding: 24px 20px 20px 20px;
+      flex: 1 1 300px;
+      box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+      border-left: 6px solid var(--primary-red);
+      position: relative;
+      min-width: 260px;
+      transition: box-shadow 0.2s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 8px 24px rgba(211,47,47,0.15);
+    }
+    .testimonial-card::before {
+      content: "“";
+      font-size: 3em;
+      color: var(--accent-red);
+      position: absolute;
+      left: 10px;
+      top: 8px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .testimonial-card p {
+      margin: 0;
+      color: var(--dark-grey);
+      font-size: 1.07em;
+      position: relative;
+      z-index: 1;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-weight: bold;
+      margin-top: 18px;
+      color: var(--primary-red);
+      font-size: 1.06em;
+      text-decoration: underline;
+    }
+    .testimonial-role {
+      font-size: 0.97em;
+      color: var(--dark-grey);
+      opacity: 0.8;
+    }
+    @media (max-width: 600px) {
+      .testimonials { flex-direction: column; }
+      .custom-header { font-size: 1.2em; padding: 15px 7vw; }
+      .custom-header-wrap { margin-bottom: 24px; }
+    }
+    .video-section {
+      margin: 32px 0;
+      text-align: center;
+    }
+    /* Download busybusy section styling (theme-matched) */
+    .download-busybusy-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--medium-grey);
+      border-radius: 0;
+      border-left: 7px solid var(--primary-red);
+      box-shadow: 0 2px 8px rgba(211,47,47,0.10);
+      margin: 36px 0 38px 0;
+      padding: 22px 18px 18px 18px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .download-busybusy-title {
+      font-size: 1.15em;
+      font-weight: bold;
+      color: var(--primary-red);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+    .download-busybusy-desc {
+      color: var(--dark-grey);
+      margin-bottom: 18px;
+      font-size: 1.03em;
+    }
+    .download-busybusy-link {
+      display: inline-block;
+      background: var(--primary-red);
+      color: var(--white);
+      padding: 12px 32px;
+      border-radius: 0;
+      font-weight: bold;
+      font-size: 1.05em;
+      text-decoration: none;
+      box-shadow: 0 1px 7px rgba(211,47,47,0.08);
+      margin-bottom: 3px;
+      transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+      letter-spacing: 0.6px;
+    }
+    .download-busybusy-link:hover {
+      background: var(--accent-red);
+      color: var(--white);
+      box-shadow: 0 2px 14px rgba(183,28,28,0.18);
+    }
+    /* List section styling */
+    .list-section {
+      margin: 32px auto 36px auto;
+      padding: 20px 32px 16px 32px;
+      max-width: 600px;
+      background: var(--light-grey);
+      border: 2px solid var(--primary-red);
+      border-radius: 0;
+      box-shadow: 0 2px 8px rgba(211,47,47,0.08);
+    }
+    .list-section h2 {
+      font-size: 1.18em;
+      color: var(--primary-red);
+      font-weight: bold;
+      margin-bottom: 10px;
+      letter-spacing: 0.6px;
+      text-align: center;
+    }
+    .list-section ol {
+      margin-left: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    .list-section ul {
+      margin-left: 2.2em;
+      margin-bottom: 0.7em;
+    }
+    .list-section li {
+      margin-bottom: 7px;
+      font-size: 1.06em;
+      color: var(--dark-grey);
+    }
+    /* Contact Me floating link */
+    .contact-link {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      background: var(--primary-red);
+      color: var(--white);
+      padding: 14px 24px;
+      border-radius: 0;
+      box-shadow: 0 4px 16px rgba(211,47,47,0.18);
+      font-weight: bold;
+      font-size: 1.07em;
+      text-decoration: none;
+      z-index: 1000;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      letter-spacing: 1px;
+      opacity: 0.93;
+    }
+    .contact-link:hover {
+      background: var(--accent-red);
+      color: var(--white);
+      box-shadow: 0 6px 18px rgba(183,28,28,0.30);
+      opacity: 1;
+    }
+    /* Last modified floating box - now smaller */
+    .last-modified {
+      position: fixed;
+      left: 18px;
+      bottom: 18px;
+      background: var(--medium-grey, #e0e0e0);
+      color: var(--dark-grey, #444);
+      padding: 5px 10px;
+      border-radius: 0;
+      font-size: 0.78em;
+      box-shadow: 0 1px 4px rgba(68,68,68,0.08);
+      z-index: 1000;
+      opacity: 0.92;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      .last-modified { font-size: 0.7em; left: 4px; bottom: 4px; padding: 4px 6px; }
+      .list-section { padding: 10px 4vw 8px 4vw; }
+      .download-busybusy-section { padding: 13px 3vw 11px 3vw; }
+      .download-busybusy-link { padding: 11px 18vw; font-size: 1em; }
+    }
+    /* Add this block to force light theme colors in dark mode */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-red: #d32f2f !important;
+        --accent-red: #b71c1c !important;
+        --light-grey: #f4f4f4 !important;
+        --medium-grey: #e0e0e0 !important;
+        --dark-grey: #444 !important;
+        --white: #fff !important;
+      }
+      body, .container, .custom-header, .story-section, .testimonial-card, .download-busybusy-section, .list-section {
+        background: var(--white) !important;
+        color: var(--dark-grey) !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="custom-header-wrap">
+      <div class="custom-header">
+        <span>What Our Customers Say</span>
+      </div>
+    </div>
+    <div class="relevant-link">
+      <a href="https://www.schenkelconstruction.com/" target="_blank" rel="noopener">
+        Learn more about Schenkel Construction’s services
+      </a>
+    </div>
+    <div class="story-section">
+      <div class="story-title">Customer Story</div>
+      <div class="story-content">
+        Our journey with Tekton began when our team faced a critical product launch and needed a robust solution fast. Tekton’s dedicated support and intuitive platform empowered us to meet our deadlines—without sacrificing quality. The transition was smooth, and the results far exceeded our expectations. Today, our workflow is more efficient, and our clients are happier than ever.
+      </div>
+      <div class="story-author">Sam Rivera</div>
+      <div class="testimonial-role" style="margin-top:2px;">Operations Lead, Tekton Partners</div>
+    </div>
+    <div class="video-section">
+      <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/PAECO8qyotY?start=19&end=35&autoplay=0&rel=0" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+      <p style="color: var(--dark-grey); margin-top: 8px;">Video testimonial (19s to 35s)</p>
+    </div>
+
+    <!-- ADDED: Download busybusy file section (in-theme, after video testimonial, line 108) -->
+    <div class="download-busybusy-section">
+      <div class="download-busybusy-title">Download: Sample busybusy.com Construction HTML File</div>
+      <div class="download-busybusy-desc">
+        Need a real-world construction project web file for inspiration or reference?<br>
+        Click below to open <b>busybusy.com (3).html</b> in a new tab.<br>
+        <span style="font-size:0.96em;">(If it doesn't download automatically, right-click and choose "Save As")</span>
+      </div>
+      <a 
+        href="file:///C:/Users/Ellie/Downloads/busybusy.com%20(3).html" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="download-busybusy-link"
+        >Open busybusy.com (3).html</a>
+    </div>
+    <!-- END ADDED SECTION -->
+
+    <div class="list-section">
+      <h2>How to Get Started</h2>
+      <ol>
+        <li>Sign Up for an Account
+          <ul>
+            <li>Use a valid email address</li>
+            <li>Create a strong password</li>
+          </ul>
+        </li>
+        <li>Verify Your Email</li>
+        <li>Start Using the Platform
+          <ul>
+            <li>Customize your profile</li>
+            <li>Explore dashboard features</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <p>This product exceeded my expectations. The support team was fantastic!</p>
+        <div class="testimonial-author">Jane Doe</div>
+        <div class="testimonial-role">CEO, Schenkel Construction</div>
+      </div>
+      <div class="testimonial-card">
+        <p>Fast, reliable, and easy to use. Highly recommended!</p>
+        <div class="testimonial-author">John Smith</div>
+        <div class="testimonial-role">Freelancer</div>
+      </div>
+      <div class="testimonial-card">
+        <p>A great experience from start to finish. Will use again.</p>
+        <div class="testimonial-author">Alex Lee</div>
+        <div class="testimonial-role">Project Manager, Construction Solutions</div>
+      </div>
+    </div>
+  </div>
+  <a href="mailto:eskelto@purdue.edu" class="contact-link">Contact Me</a>
+  <div id="last-modified" class="last-modified"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const lastMod = new Date(document.lastModified);
+      const formatted = lastMod.toLocaleString(undefined, {
+        year: 'numeric', month: 'long', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+      document.getElementById("last-modified").textContent = "Last date modified: " + formatted;
+    });
+  </script>
+</body>
+</html>
